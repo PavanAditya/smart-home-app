@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Goblins
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" [style.--ion-background-color]="theme === 'dark' ? 'black' : 'white'"
+[style.--ion-text-color]="theme === 'dark' ? 'white' : 'black'">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Goblins</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list [style.background]="theme === 'dark' ? '#242424' : '#e4e4e4'" style="margin: 5%;">
+      <ion-item [style.--background]="theme === 'dark' ? '#242424' : '#e4e4e4'">
+        <ion-label>Fan 1</ion-label>
+        <ion-toggle [color]="theme === 'dark' ? 'dark' : 'light'"></ion-toggle>
+      </ion-item>
+
+      <ion-item [style.--background]="theme === 'dark' ? '#242424' : '#e4e4e4'">
+        <ion-label>Light 1</ion-label>
+        <ion-toggle [color]="theme === 'dark' ? 'dark' : 'light'"></ion-toggle>
+      </ion-item>
+
+      <ion-item [style.--background]="theme === 'dark' ? '#242424' : '#e4e4e4'">
+        <ion-label>Light 2</ion-label>
+        <ion-toggle [color]="theme === 'dark' ? 'dark' : 'light'"></ion-toggle>
+      </ion-item>
+
+      <ion-item [style.--background]="theme === 'dark' ? '#242424' : '#e4e4e4'">
+        <ion-label>Light 3</ion-label>
+        <ion-toggle [color]="theme === 'dark' ? 'dark' : 'light'"></ion-toggle>
+      </ion-item>
+
+      <ion-item [style.--background]="theme === 'dark' ? '#242424' : '#e4e4e4'">
+        <ion-label>Hall AC</ion-label>
+        <ion-toggle [color]="theme === 'dark' ? 'dark' : 'light'"></ion-toggle>
+      </ion-item>
+
+      <ion-item [style.--background]="theme === 'dark' ? '#242424' : '#e4e4e4'">
+        <ion-label>Kitchen Light</ion-label>
+        <ion-toggle [color]="theme === 'dark' ? 'dark' : 'light'"></ion-toggle>
+      </ion-item>
+
+      <ion-item [style.--background]="theme === 'dark' ? '#242424' : '#e4e4e4'">
+        <ion-label>Bedroom Door</ion-label>
+        <ion-toggle [color]="theme === 'dark' ? 'dark' : 'light'"></ion-toggle>
+      </ion-item>
+
+      <ion-item [style.--background]="theme === 'dark' ? '#242424' : '#e4e4e4'">
+        <ion-label>Fan 2</ion-label>
+        <ion-toggle [color]="theme === 'dark' ? 'dark' : 'light'"></ion-toggle>
+      </ion-item>
+
+      <ion-item [style.--background]="theme === 'dark' ? '#242424' : '#e4e4e4'">
+        <ion-label>Add New</ion-label>
+        <ion-icon name="add-circle"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+  <!-- <app-explore-container name="Goblins page"></app-explore-container> -->
+</ion-content>
