@@ -14,9 +14,18 @@
   <br />
   <br />
   <br />
+  <br />
+  <br />
+  <br />
+  <br />
   <ion-content align="center">
-    <ion-icon name="mic-circle"></ion-icon>
+    <ion-icon [class]="isListening ? 'icon-theme animate' : 'icon-theme'" name="mic-circle"></ion-icon>
     <ion-title size="large">Akira is listening...,</ion-title>
+    <br />
+    <br />
+    <br />
+    <br />
+    <ion-button (click)="startSpeechRecognition()">{{ isListening ? 'Stop' : 'Start' }} Speech Recognition</ion-button>
   </ion-content>
 
   <!-- <app-explore-container name="Akira page"></app-explore-container> -->
