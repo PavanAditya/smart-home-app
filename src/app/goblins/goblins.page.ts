@@ -20,4 +20,8 @@ export class GoblinsPage implements OnInit {
     });
   }
 
+  public logout(): void {
+    this.globalService.logout();
+  }
+
 }

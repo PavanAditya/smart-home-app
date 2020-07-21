@@ -1,0 +1,14 @@
+ion-title {
+    margin-top: 5%;
+}
+
+.logout {
+    margin-left: 80%;
+    --background: transparent;
+    margin-top: -12%;
+    --box-shadow: none;
+    ion-icon {
+        color: white;
+        font-size: 35px;
+    }
+}

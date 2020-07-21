@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../global.service';
-import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.page.html',
-  styleUrls: ['./profile.page.scss'],
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
-export class ProfilePage implements OnInit {
+export class LoginPage implements OnInit {
 
   public loginDisplay = true;
   public theme = 'dark';
@@ -20,6 +20,8 @@ export class ProfilePage implements OnInit {
   // ? Login Details
 
   // ? Register Details
+  public regFirstName: string;
+  public regLastName: string;
   public regName: string;
   public regPh: string;
   public regMail: string;
@@ -34,12 +36,22 @@ export class ProfilePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loginName = '';
+    this.loginPwd = '';
+    this.regName = '';
+    this.regFirstName = '';
+    this.regLastName = '';
+    this.regPh = '';
+    this.regMail = '';
+    this.regPwd = '';
+    this.regConfPwd = '';
     this.globalService.theme.subscribe(resp => {
       this.theme = resp;
     });
     this.globalService.userLoggedIn.subscribe(resp => {
       this.userLoggedIn = resp;
     });
+    this.isLoggedIn();
   }
 
   publicdoRefresh(event): void {
@@ -63,12 +75,8 @@ Try Remembring Passwords
 
   public login(): void {
     if (this.loginName === 'admin' && this.loginPwd === 'admin') {
-      alert('Temporary Login');
-      this.globalService.userLoggedIn.next(true);
       this.storage.set('loginName', this.loginName);
       localStorage.setItem('loginName', this.loginName);
-      this.storage.set('isLoggedIn', true);
-      localStorage.setItem('isLoggedIn', 'true');
       this.router.navigate(['/tabs/otp']);
     } else {
       alert(`Wrong LoginName or Password`);

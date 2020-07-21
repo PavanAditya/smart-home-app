@@ -1,5 +1,7 @@
 {
   "name": "smart-home-app",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

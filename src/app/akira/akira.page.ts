@@ -41,12 +41,17 @@ export class AkiraPage implements OnInit {
         });
         this.recognition.onresult = (event => {
           if (event.results.length > 0) {
+            this.recognizedText = event.results[0][0].transcript;
             console.log('Output STT: ', event.results[0][0].transcript);
           }
         });
         this.recognition.start();
       });
     }
+  }
+
+  public logout(): void {
+    this.globalService.logout();
   }
 
 }

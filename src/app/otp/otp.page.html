@@ -1,0 +1,20 @@
+<ion-content [fullscreen]="true" [style.--ion-background-color]="theme === 'dark' ? 'black' : 'white'">
+  <ion-grid>
+    <ion-row>
+      <ion-header collapse="condense">
+        <ion-toolbar>
+          <ion-title size="large">Otp</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-card>
+        <ion-card-header align="center">
+          OTP
+        </ion-card-header>
+        <ion-card-content align="center">
+          <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:5}"></ng-otp-input>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>

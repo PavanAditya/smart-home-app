@@ -20,4 +20,8 @@ export class HomePage implements OnInit {
     });
   }
 
+  public logout(): void {
+    this.globalService.logout();
+  }
+
 }

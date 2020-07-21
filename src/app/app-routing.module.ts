@@ -6,10 +6,18 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
-  {
-    path: 'akira',
-    loadChildren: () => import('./akira/akira.module').then( m => m.AkiraPageModule)
-  },
+  // {
+  //   path: 'login',
+  //   loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  // },
+  // {
+  //   path: 'otp',
+  //   loadChildren: () => import('./otp/otp.module').then( m => m.OtpPageModule)
+  // },
+  // {
+  //   path: 'akira',
+  //   loadChildren: () => import('./akira/akira.module').then( m => m.AkiraPageModule)
+  // },
   // {
   //   path: 'goblins',
   //   loadChildren: () => import('./goblins/goblins.module').then( m => m.GoblinsPageModule)

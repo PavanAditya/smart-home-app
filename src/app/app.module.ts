@@ -9,13 +9,18 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
+import { IonicStorageModule } from '@ionic/storage';
+import { NgOtpInputModule } from 'ng-otp-input';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot(), NgOtpInputModule],
   providers: [
     StatusBar,
     SplashScreen,
+    SpeechRecognition,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

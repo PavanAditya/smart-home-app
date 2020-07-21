@@ -1,11 +1,3 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Profile
-    </ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content [fullscreen]="true" [style.--ion-background-color]="theme === 'dark' ? 'black' : 'white'">
   <ion-grid>
     <ion-row>
@@ -41,11 +33,11 @@
                 Password?</a></span>
             <span style="text-decoration: underline;"><a (click)="changeDisplayCard()">Sign Up</a></span>
           </p>
-          <ion-button iclass="ion-activatable ripple-parent" (click)="login(loginName, loginPwd)">
+          <!-- <ion-button iclass="ion-activatable ripple-parent" (click)="login(loginName, loginPwd)">
             <ion-icon name="logo-facebook" margin-end="4px"></ion-icon>
             Login with facebook
             <ion-ripple-effect></ion-ripple-effect>
-          </ion-button>
+          </ion-button> -->
         </ion-card-content>
       </ion-card>
       <ion-card *ngIf="!loginDisplay">
@@ -54,6 +46,12 @@
         </ion-card-header>
         <ion-card-content>
           <br />
+          <ion-item class="ion-input">
+            <ion-input type="text" placeholder="First Name" [(ngModel)]="regFirstName"></ion-input>
+          </ion-item>
+          <ion-item class="ion-input">
+            <ion-input type="text" placeholder="Last Name" [(ngModel)]="regLastName"></ion-input>
+          </ion-item>
           <ion-item class="ion-input">
             <ion-input type="text" placeholder="User Name" [(ngModel)]="regName"></ion-input>
           </ion-item>
@@ -77,15 +75,14 @@
           <p align="center">
             <span style="text-decoration: underline;"><a (click)="changeDisplayCard()">Sign In</a></span>
           </p>
-          <ion-button class="ion-activatable ripple-parent" (click)="register()">
+          <!-- <ion-button class="ion-activatable ripple-parent" (click)="register()">
             <ion-icon name="logo-facebook" margin-end="4px"></ion-icon>
             Signup with facebook
             <ion-ripple-effect></ion-ripple-effect>
-          </ion-button>
+          </ion-button> -->
         </ion-card-content>
       </ion-card>
 
-      <!-- <app-explore-container name="Profile page"></app-explore-container> -->
     </ion-row>
   </ion-grid>
 </ion-content>

@@ -3,6 +3,9 @@
     <ion-title>
       Akira
     </ion-title>
+    <ion-button (click)="logout()" class="logout">
+      <ion-icon name="exit"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -26,6 +29,7 @@
     <br />
     <br />
     <ion-button (click)="startSpeechRecognition()">{{ isListening ? 'Stop' : 'Start' }} Speech Recognition</ion-button>
+    <ion-text>{{recognizedText}}</ion-text>
   </ion-content>
 
   <!-- <app-explore-container name="Akira page"></app-explore-container> -->
