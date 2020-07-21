@@ -1,14 +1,40 @@
 ion-title {
     margin-top: 5%;
+    margin-bottom: 2%;
 }
 
 .logout {
-    margin-left: 80%;
+    margin-left: 65%;
     --background: transparent;
-    margin-top: -12%;
+    margin-top: -15%;
     --box-shadow: none;
     ion-icon {
+        margin-left: 50%;
         color: white;
         font-size: 35px;
     }
+}
+
+.user-wish {
+    font-size: 13px;
+}
+
+.user-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: wheat;
+}
+
+.room-name {
+    font-size: 15px;
+    color: wheat;
+}
+
+.room-dets {
+    font-size: 13px;
+    color: wheat;
+}
+
+.room-devices {
+    font-size: 20px;
 }

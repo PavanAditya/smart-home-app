@@ -1,7 +1,39 @@
-.show {
-    opacity: 1;
+ion-fab-button {
+    --border-radius: 15px;
+    height: 35px;
+    width: 175px;
+    margin-left: -60px;
+    margin-top: 14px;
+    color: #acd4f9;
+    ion-icon {
+        font-size: 23px;
+        padding: 4px;
+        border: 2px solid #0c508d;
+        border-radius: 15px;
+        color: white;
+        background-color: #0c508d;
+        position: fixed;
+        margin-left: -69px;
+    }
+    .light-icon {
+        color: #0c508d;
+        background-color: #acd4f9;
+        border: 2px solid #acd4f9;
+    }
+    .room-name {
+        margin-left: 5px;
+        position: fixed;
+    }
+    .end-icon {
+        position: fixed;
+        margin-left: 75px;
+        border: none;
+        background-color: transparent;
+        padding: 0;
+        color: black;
+    }
 }
 
-.hide {
-    opacity: 0.5;
+.list-buttons {
+    --background: #0c508d !important;
 }

@@ -8,8 +8,9 @@ import { Router } from '@angular/router';
 })
 export class GlobalService {
 
-  public theme = new BehaviorSubject<string>('dark');
+  public theme = new BehaviorSubject<string>('white');
   public userLoggedIn = new BehaviorSubject<boolean>(false);
+  public selectedRoom = new BehaviorSubject<number>(1);
 
   constructor(private storage: Storage, private router: Router) { }
 

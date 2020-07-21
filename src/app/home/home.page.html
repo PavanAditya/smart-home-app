@@ -1,11 +1,17 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      My Home
+      <ion-icon name="skull-outline" style="font-size: 30px;"></ion-icon> <br />
+      <span class="user-wish">{{ 'Hello ' }}</span><span class="user-name">{{ 'Pavan' }}</span>
     </ion-title>
-    <ion-button (click)="logout()" class="logout">
-      <ion-icon name="exit"></ion-icon>
-    </ion-button>
+    <!-- <ion-button (click)="logout()" class="logout">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button> -->
+    <ion-title (click)="addRoom()" class="logout">
+      <ion-icon name="add-circle-outline"></ion-icon> <br />
+      <span class="room-name">{{ selectedRoom().roomName }}</span> <br />
+      <span class="room-devices">{{ selectedRoom().numOfDevices }}</span><span class="room-dets">{{ ' Active Devices' }}</span>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -74,6 +80,7 @@
       </ion-item>
     </ion-card>
   </ion-content>
+
 
   <!-- <app-explore-container name="Home page"></app-explore-container> -->
 </ion-content>

@@ -3,12 +3,12 @@
 
   <ion-tab-bar slot="bottom" *ngIf="userLoggedIn">
     <ion-tab-button tab="akira">
-      <ion-icon name="mic"></ion-icon>
+      <ion-icon name="mic-circle-outline" style="font-size: 40px;"></ion-icon>
       <!-- <ion-label>Akira</ion-label> -->
     </ion-tab-button>
 
-    <ion-tab-button tab="home">
-      <ion-icon name="home"></ion-icon>
+    <ion-tab-button tab="home-outline">
+      <!-- <ion-icon name="home"></ion-icon> -->
       <!-- <ion-label>Home</ion-label> -->
     </ion-tab-button>
 
@@ -18,7 +18,7 @@
     </ion-tab-button> -->
 
     <ion-tab-button tab="goblins">
-      <ion-icon name="apps"></ion-icon>
+      <ion-icon name="grid-outline" style="font-size: 30px;"></ion-icon>
       <!-- <ion-label>Goblins</ion-label> -->
     </ion-tab-button>
 
@@ -27,5 +27,19 @@
       <ion-label>Settings</ion-label>
     </ion-tab-button> -->
   </ion-tab-bar>
+
+  <ion-fab horizontal="center" vertical="bottom" slot="fixed" *ngIf="userLoggedIn">
+    <ion-fab-button>
+      <ion-icon name="home-outline"></ion-icon>
+      <span class="room-name">{{ selectedRoom() }}</span>
+      <ion-icon name="caret-up-circle-outline" class="end-icon"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button class="list-buttons" *ngFor="let room of roomsList" (click)="changeRoom(room.id)">
+        <ion-icon name="home" class="light-icon"></ion-icon>
+        <span class="room-name">{{ room.roomName }}</span>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 
 </ion-tabs>

@@ -9,10 +9,32 @@
 
       <ion-card>
         <ion-card-header align="center">
-          OTP
+          Verification
         </ion-card-header>
         <ion-card-content align="center">
-          <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:5}"></ng-otp-input>
+          <p class="supp-line">
+            We've sent you a verification code <br />
+            via email
+          </p>
+          <br />
+          <br />
+          <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="otpConfig">
+          </ng-otp-input>
+          <ion-button class="ion-activatable ripple-parent login-button" (click)="submitOtp()">
+            Confirm
+            <ion-icon name="log-in-outline"></ion-icon>
+            <ion-ripple-effect></ion-ripple-effect>
+          </ion-button>
+          <ion-button class="btn-cancel ion-activatable ripple-parent login-button" (click)="navigateToLogin()">
+            Cancel
+            <ion-ripple-effect></ion-ripple-effect>
+          </ion-button>
+          <p align="center">
+            <span class="supp-line">Didn't receive code?
+              <a><b>Resend</b></a>
+            </span>
+            <!-- <span style="text-decoration: underline;"><a (click)="changeDisplayCard()">Sign Up</a></span> -->
+          </p>
         </ion-card-content>
       </ion-card>
     </ion-row>

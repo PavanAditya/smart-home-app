@@ -10,7 +10,7 @@ import { Storage } from '@ionic/storage';
 })
 export class LoginPage implements OnInit {
 
-  public loginDisplay = true;
+  public loginDisplay = 'welcome';
   public theme = 'dark';
   public userLoggedIn: boolean;
 
@@ -63,8 +63,8 @@ export class LoginPage implements OnInit {
     }, 2000);
   }
 
-  public changeDisplayCard(): void {
-    this.loginDisplay = !this.loginDisplay;
+  public changeDisplayCard(tabName: string): void {
+    this.loginDisplay = tabName;
   }
 
   public forgotPassword(): void {

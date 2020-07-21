@@ -9,15 +9,18 @@ ion-row {
 }
 ion-card {
     width: 100%;
+    box-shadow: none;
+    background: none;
 }
 ion-card-content {
-    background: #333333;
+    background: transparent;
     padding: 4%;
 }
 ion-card-header {
+    background: transparent;
     font-size: 35px;
     font-weight: 700;
-    color: beige;
+    color: black;
 }
 .scroll-content {
     align-content: center;
@@ -34,7 +37,7 @@ ion-card-header {
     background: transparent;
 }
 ion-card.card {
-    box-shadow: beige;
+    box-shadow: none;
 }
 .a {
     color: aqua;
@@ -54,10 +57,34 @@ ion-card.card {
 ion-button {
     width: 100%;
 }
-.login-button {
-    --background: teal !important;
-}
 .ripple-parent {
     position: relative;
     overflow: hidden;
+}
+.login-button {
+    --background: black !important;
+    border-radius: 15px;
+    height: 50px;
+    width: 100%;
+    font-size: 22px;
+    font-weight: 500;
+    color: white;
+    ion-icon {
+        position: fixed;
+        margin-left: 40%;
+    }
+}
+
+.btn-cancel {
+    --background: grey !important;
+}
+
+.supp-line {
+    margin-right: 10px;
+    color: black !important;
+    font-size: 16px;
+    b {
+        color: black !important;
+        font-size: 18px;
+    }
 }

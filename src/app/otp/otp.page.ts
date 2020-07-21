@@ -12,6 +12,20 @@ export class OtpPage implements OnInit {
 
   public theme = 'dark';
   public userLoggedIn: boolean;
+  public otpValue = '';
+  public otpConfig = {
+    length: 5,
+    allowNumbersOnly: true,
+    inputStyles: {
+      background: '#acd4f9',
+      border: '3px solid #0c508d',
+      color: 'black',
+      fontSize: '25px',
+      height: '50px',
+      width: '50px',
+      marginBottom: '10%'
+    }
+  };
 
   constructor(
     private globalService: GlobalService,
@@ -31,8 +45,12 @@ export class OtpPage implements OnInit {
 
   public onOtpChange(otp): void {
     console.log(otp);
-    if (otp.length === 5) {
-      if (otp === '00000') {
+    this.otpValue = otp;
+  }
+
+  public submitOtp(): void {
+    if (this.otpValue.length === 5) {
+      if (this.otpValue === '00000') {
         alert('Login Successful');
         this.globalService.userLoggedIn.next(true);
         this.storage.set('isLoggedIn', true);
@@ -50,6 +68,10 @@ export class OtpPage implements OnInit {
       this.userLoggedIn = value;
     });
     this.userLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  }
+
+  public navigateToLogin(): void {
+    this.globalService.logout();
   }
 
 }
