@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../global.service';
 import { Storage } from '@ionic/storage';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Auth } from 'aws-amplify';
+
 
 @Component({
   selector: 'app-otp',
@@ -13,8 +15,9 @@ export class OtpPage implements OnInit {
   public theme = 'dark';
   public userLoggedIn: boolean;
   public otpValue = '';
+  public tabName = '';
   public otpConfig = {
-    length: 5,
+    length: 6,
     allowNumbersOnly: true,
     inputStyles: {
       background: '#acd4f9',
@@ -30,8 +33,13 @@ export class OtpPage implements OnInit {
   constructor(
     private globalService: GlobalService,
     private storage: Storage,
-    private router: Router
-  ) { }
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe(val => {
+      this.tabName = this.route.snapshot.params[`tabName`];
+    });
+  }
 
   ngOnInit() {
     this.globalService.theme.subscribe(resp => {
@@ -49,15 +57,45 @@ export class OtpPage implements OnInit {
   }
 
   public submitOtp(): void {
-    if (this.otpValue.length === 5) {
-      if (this.otpValue === '00000') {
-        alert('Login Successful');
-        this.globalService.userLoggedIn.next(true);
-        this.storage.set('isLoggedIn', true);
-        localStorage.setItem('isLoggedIn', 'true');
-        this.router.navigate(['/tabs/home']);
+    // if (this.otpValue.length === 6) {
+    //   if (this.otpValue === '00000') {
+    //     alert('Login Successful');
+    //     this.globalService.userLoggedIn.next(true);
+    //     this.storage.set('isLoggedIn', true);
+    //     localStorage.setItem('isLoggedIn', 'true');
+    //     this.router.navigate(['/tabs/home']);
+    //   }
+    //   else {
+    //     alert('Incorrect Otp');
+    //   }
+    // }
+    if (this.tabName === 'register') {
+      if (this.otpValue.length === 6) {
+        try {
+          Auth.confirmSignUp(localStorage.getItem('userName'), this.otpValue);
+          console.log('Signup Successful...');
+          this.router.navigateByUrl('/auth/login');
+        } catch (error) {
+          console.log('error confirming sign up', error);
+          alert('Incorrect Otp');
+        }
+      } else {
+        alert('Invalid Otp');
       }
-      else {
+    } else if (this.tabName === 'login') {
+      try {
+        Auth.confirmSignIn(JSON.parse(localStorage.getItem('loginDetails')), this.otpValue).then((code) => {
+          console.log(code);
+          alert('Login Successful');
+          this.globalService.userLoggedIn.next(true);
+          this.storage.set('isLoggedIn', true);
+          localStorage.setItem('isLoggedIn', 'true');
+          this.router.navigate(['/tabs/home']);
+        }).catch((e) => {
+          console.log(e);
+          alert('Incorrect Otp');
+        });
+      } catch (error) {
         alert('Incorrect Otp');
       }
     }

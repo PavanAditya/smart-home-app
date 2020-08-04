@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../global.service';
 import { Router } from '@angular/router';
+import { Auth } from 'aws-amplify';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -20,9 +21,9 @@ export class LoginPage implements OnInit {
   // ? Login Details
 
   // ? Register Details
+  public regUserName: string;
   public regFirstName: string;
   public regLastName: string;
-  public regName: string;
   public regPh: string;
   public regMail: string;
   public regConfPwd: string;
@@ -38,7 +39,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.loginName = '';
     this.loginPwd = '';
-    this.regName = '';
+    this.regUserName = '';
     this.regFirstName = '';
     this.regLastName = '';
     this.regPh = '';
@@ -74,17 +75,48 @@ Try Remembring Passwords
   }
 
   public login(): void {
-    if (this.loginName === 'admin' && this.loginPwd === 'admin') {
-      this.storage.set('loginName', this.loginName);
-      localStorage.setItem('loginName', this.loginName);
-      this.router.navigate(['/tabs/otp']);
-    } else {
-      alert(`Wrong LoginName or Password`);
-    }
+    // if (this.loginName === 'admin' && this.loginPwd === 'admin') {
+    //   this.storage.set('loginName', this.loginName);
+    //   localStorage.setItem('loginName', this.loginName);
+    //   this.router.navigate(['/tabs/otp']);
+    // } else {
+    //   alert(`Wrong LoginName or Password`);
+    // }
+    Auth.signIn(this.loginName, this.loginPwd).then(res => {
+      this.storage.set('loginDetails', JSON.stringify(res));
+      localStorage.setItem('loginDetails', JSON.stringify(res));
+      console.log('User Details. ', res);
+      alert('Login Succesful. Proceed to Multi Factor Authentication');
+      this.router.navigate(['/tabs/otp', 'login']);
+    }).catch(err => {
+      alert('Login Failed');
+    }).finally(() => {
+      alert('Login Failed');
+    });
   }
 
   public register(): void {
     alert('Temporary Registration');
+    const registerDetails = {
+      username: this.regUserName,
+      password: this.regPwd,
+      attributes: {
+        email: this.regMail,
+        phone_number: this.regPh,
+        family_name: this.regFirstName,
+        given_name: this.regLastName,
+        gender: 'Male'
+      }
+    };
+    Auth.signUp(registerDetails).then(res => {
+      this.storage.set('userName', JSON.stringify(this.regUserName));
+      localStorage.setItem('userName', JSON.stringify(this.regUserName));
+      console.log('Registration Successful', res);
+      alert('Registration Successful. Proceed to MultiFactor authentication');
+      this.router.navigate(['/tabs/otp', 'register']);
+    }).catch(err => {
+      alert('Registration Failed');
+    });
   }
 
   public isLoggedIn(): void {

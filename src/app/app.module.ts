@@ -13,10 +13,23 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { NgOtpInputModule } from 'ng-otp-input';
 
+import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
+import Amplify from 'aws-amplify';
+import awsconfig from '../aws-export';
+
+Amplify.configure(awsconfig);
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot(), NgOtpInputModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    IonicStorageModule.forRoot(),
+    NgOtpInputModule,
+    AmplifyUIAngularModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,
@@ -25,4 +38,4 @@ import { NgOtpInputModule } from 'ng-otp-input';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

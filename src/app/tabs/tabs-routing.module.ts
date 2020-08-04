@@ -20,7 +20,7 @@ const routes: Routes = [
         canActivate: [NoAuthGuard]
       },
       {
-        path: 'otp',
+        path: 'otp/:tabName',
         loadChildren: () => import('../otp/otp.module').then(m => m.OtpPageModule),
         canActivate: [NoAuthGuard]
       },
